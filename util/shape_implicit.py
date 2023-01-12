@@ -3,8 +3,9 @@ import numpy as np
 import torch
 import trimesh
 
-from exercise_3.util.misc import remove_nans
-
+def remove_nans(tensor):
+    tensor_nan = torch.isnan(tensor[:, 3])
+    return tensor[~tensor_nan, :]
 
 class ShapeImplicit(torch.utils.data.Dataset):
     """
